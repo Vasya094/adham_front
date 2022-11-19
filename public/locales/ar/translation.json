@@ -1,0 +1,12 @@
+{
+  "app_name": "جروتfباسكت",
+  "login": "تسجيل الدخول",
+  "registration": "تسجيل الحساب",
+  "mainPage": "الصفحة الرئيسية",
+  "firstName": "الاسم الاول",
+  "lastName": "اسم العائلة",
+  "emailAddress": "البريد الالكترونى",
+  "password": "كلمة المرور",
+  "alreadyHaveAccountSignin": "هل لديك حساب؟ تسجيل الدخول",
+  "signUp": "اشتراك"
+}

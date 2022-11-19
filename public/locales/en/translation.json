@@ -1,0 +1,12 @@
+{
+  "app_name": "Grootbasket",
+  "login": "Login",
+  "registration": "Registration",
+  "mainPage": "Main page",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "emailAddress": "Email address",
+  "password": "Password",
+  "alreadyHaveAccountSignin": "Already have an account? Sign in",
+  "signUp": "Sign Up"
+}
