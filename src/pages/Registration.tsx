@@ -1,9 +1,12 @@
 import { useState, useEffect, FormEvent } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
-// import { toast } from "react-toastify"
 import { useTranslation } from "react-i18next"
-import { authSelector, register, reset } from "../features/auth/authSlice"
+import {
+  register,
+  reset,
+  selectLoginedUser,
+} from "../features/auth/authSlice"
 import CircularProgress from "@mui/material/CircularProgress"
 import { ChangeEvent } from "react"
 import { UserRegistrationData } from "../interfaces/User"
@@ -13,18 +16,18 @@ import Avatar from "@mui/material/Avatar"
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
 import TextField from "@mui/material/TextField"
-import FormControlLabel from "@mui/material/FormControlLabel"
-import Checkbox from "@mui/material/Checkbox"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import Typography from "@mui/material/Typography"
+import { toast } from "react-toastify"
 import Container from "@mui/material/Container"
 import { ThemeProvider } from "@mui/material/styles"
 import theme from "../theme"
 
 export default function Registration() {
   const { t } = useTranslation()
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -38,13 +41,12 @@ export default function Registration() {
   const dispatch = useDispatch<AppDispatch>()
 
   const { user, isLoading, isError, isSuccess, message } =
-    useSelector(authSelector)
+    useSelector(selectLoginedUser)
 
   useEffect(() => {
     if (isError) {
-      // toast.error(message)
+      toast.error(message)
     }
-
     if (isSuccess || user) {
       navigate("/")
     }

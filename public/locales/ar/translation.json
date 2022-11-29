@@ -8,5 +8,10 @@
   "emailAddress": "البريد الالكترونى",
   "password": "كلمة المرور",
   "alreadyHaveAccountSignin": "هل لديك حساب؟ تسجيل الدخول",
-  "signUp": "اشتراك"
+  "signUp": "اشتراك",
+  "myAccount": "حسابي",
+  "logOut": "تسجيل خروج",
+  "signIn": "تسجيل الدخول",
+  "dontHaveAccountSignUp": "ليس لديك حساب؟ اشتراك",
+  "rememberMe": "تذكرنى"
 }

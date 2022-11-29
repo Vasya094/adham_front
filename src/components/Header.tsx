@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useTranslation } from "react-i18next"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
 import Toolbar from "@mui/material/Toolbar"
@@ -14,13 +14,17 @@ import FormGroup from "@mui/material/FormGroup"
 import MenuItem from "@mui/material/MenuItem"
 import Menu from "@mui/material/Menu"
 import { useAppSelector } from "../app/hooks"
-import { selectLoginedUser } from "../features/auth/authSlice"
+import { logout, reset, selectLoginedUser } from "../features/auth/authSlice"
 import { Button } from "@mui/material"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "../app/store"
 
 export default function MenuAppBar() {
   const [auth, setAuth] = React.useState(true)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const { t } = useTranslation()
+  const navigate = useNavigate()
+  const dispatch = useDispatch<AppDispatch>()
 
   const loginedUser = useAppSelector(selectLoginedUser)
 
@@ -34,6 +38,12 @@ export default function MenuAppBar() {
 
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const onLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    navigate("/")
   }
 
   return (
@@ -54,7 +64,23 @@ export default function MenuAppBar() {
               <Button style={{ color: "white" }}>{t("mainPage")}</Button>
             </Link>
           </Typography>
-          <div>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              p: 1,
+              m: 1,
+              alignItems: "center",
+              borderRadius: 1,
+            }}
+          >
+            {loginedUser && loginedUser.user && (
+              <Box>
+                <Button key={loginedUser?.user._id} sx={{ color: "#fff" }}>
+                  {loginedUser?.user.firstName}
+                </Button>
+              </Box>
+            )}
             <IconButton
               size='large'
               aria-label='account of current user'
@@ -65,7 +91,7 @@ export default function MenuAppBar() {
             >
               <AccountCircle />
             </IconButton>
-            {loginedUser ? (
+            {loginedUser && loginedUser.user ? (
               <Menu
                 id='menu-appbar'
                 anchorEl={anchorEl}
@@ -73,8 +99,8 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>{t("myAccount")}</MenuItem>
+                <MenuItem onClick={onLogout}>{t("logOut")}</MenuItem>
               </Menu>
             ) : (
               <Menu
@@ -84,31 +110,29 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem>
-                  <Link to='/login' style={{ textDecoration: "none" }}>
+                <Link to='/login' style={{ textDecoration: "none" }}>
+                  <MenuItem>
                     <Typography
-                      color='primary'
-                      variant='button'
+                      sx={{ color: "#000000" }}
                       display='block'
                     >
                       {t("login")}
                     </Typography>
-                  </Link>
-                </MenuItem>
-                <MenuItem>
-                  <Link to='/registration' style={{ textDecoration: "none" }}>
+                  </MenuItem>
+                </Link>
+                <Link to='/registration' style={{ textDecoration: "none" }}>
+                  <MenuItem>
                     <Typography
-                      color='primary'
-                      variant='button'
+                      sx={{ color: "#000000" }}
                       display='block'
                     >
                       {t("registration")}
                     </Typography>
-                  </Link>
-                </MenuItem>
+                  </MenuItem>
+                </Link>
               </Menu>
             )}
-          </div>
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

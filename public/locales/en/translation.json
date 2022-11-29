@@ -8,5 +8,10 @@
   "emailAddress": "Email address",
   "password": "Password",
   "alreadyHaveAccountSignin": "Already have an account? Sign in",
-  "signUp": "Sign Up"
+  "signUp": "Sign Up",
+  "myAccount": "My account",
+  "logOut": "Log out",
+  "signIn": "Sign In",
+  "dontHaveAccountSignUp": "Don't have an account? Sign Up",
+  "rememberMe": "Remember me"
 }

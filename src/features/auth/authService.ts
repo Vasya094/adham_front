@@ -1,8 +1,5 @@
-import axios from "axios"
-import { UserRegistrationData } from "../../interfaces/User"
+import { UserLoginData, UserRegistrationData } from "../../interfaces/User"
 import api from "../../services/api"
-
-const API_URL = "/"
 
 // Register user
 const register = async (userData: UserRegistrationData) => {
@@ -16,14 +13,14 @@ const register = async (userData: UserRegistrationData) => {
 }
 
 // Login user
-const login = async (userData: UserRegistrationData) => {
-  const response = await axios.post(API_URL + "login", userData)
+const login = async (userData: UserLoginData) => {
+  const response = await api.post("/login", userData)
 
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data))
   }
 
-  return response.data
+  return response.data.data
 }
 
 // Logout user
