@@ -14,7 +14,6 @@ import { useDispatch } from "react-redux"
 import { AppDispatch } from "../app/store"
 import { ChangeEvent, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { toast } from "react-toastify"
 
 export default function Login() {
   const { t } = useTranslation()
@@ -32,9 +31,9 @@ export default function Login() {
     useSelector(selectLoginedUser)
 
   useEffect(() => {
-    if (isError) {
-      toast.error(message)
-    }
+    // if (isError) {
+    //   toast.error(message)
+    // }
     if (isSuccess || user) {
       navigate("/")
     }

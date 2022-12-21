@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 function Dashboard() {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    
+  })
 
   return (
     <>

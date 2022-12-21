@@ -1,6 +1,5 @@
 import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { ToastContainer } from "react-toastify"
 import logo from "./logo.svg"
 import { Counter } from "./features/counter/Counter"
 import "./App.css"
@@ -22,18 +21,6 @@ function App() {
           </Routes>
         </div>
       </Router>
-      <ToastContainer
-        position='top-right'
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='light'
-      />
     </>
   )
 }
