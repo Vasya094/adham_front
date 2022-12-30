@@ -6,7 +6,7 @@ i18next
   .use(initReactI18next)
   .use(HttpApi)
   .init({
-    lng: "en",
+    lng: "ar",
     interpolation: {
       escapeValue: false,
     },

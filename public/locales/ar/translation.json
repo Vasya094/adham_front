@@ -13,5 +13,28 @@
   "logOut": "تسجيل خروج",
   "signIn": "تسجيل الدخول",
   "dontHaveAccountSignUp": "ليس لديك حساب؟ اشتراك",
-  "rememberMe": "تذكرنى"
+  "rememberMe": "تذكرنى",
+  "lessons": "الدروس",
+  "teacher": "المدرس",
+  "student": "الطالب",
+  "date": "التاريخ",
+  "time": "الوقت",
+  "paid": "مدفوع",
+  "newLesson": "درس جديد",
+  "wrong_authentication_token": "حاول تسجيل الدخول إلى التطبيق مرة أخرى",
+  "birthDate": "تاريخ الولادة",
+  "countries": {
+    "egypt": "مصر",
+    "saudiArabia": "المملكة العربية السعودية",
+    "qatar": "دولة قطر",
+    "tunisia": "تونس"
+  },
+  "countryResidence": "بلد الإقامة",
+  "phoneNumber": "رقم التليفون",
+  "gender": "جنس تذكير أو تأنيث",
+  "male": "ذكر",
+  "female": "أنثى",
+  "students": "طلاب",
+  "teachers": "معلمون",
+  "fullName": "الاسم الكامل"
 }

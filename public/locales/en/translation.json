@@ -13,5 +13,28 @@
   "logOut": "Log out",
   "signIn": "Sign In",
   "dontHaveAccountSignUp": "Don't have an account? Sign Up",
-  "rememberMe": "Remember me"
+  "rememberMe": "Remember me",
+  "lessons": "Lessons",
+  "teacher": "Teacher",
+  "student": "Student",
+  "date": "Date",
+  "time": "Time",
+  "paid": "Paid",
+  "newLesson": "New lesson",
+  "wrong_authentication_token": "Try logging in to the app again",
+  "birthDate": "Birth date",
+  "countries": {
+    "egypt": "Egypt",
+    "saudiArabia": "Saudi Arabia",
+    "qatar": "Qatar",
+    "tunisia": "Tunisia"
+  },
+  "countryResidence": "Country of residence",
+  "phoneNumber": "Phone number",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "students": "Students",
+  "teachers": "Teachers",
+  "fullName": "Full name"
 }

@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { RootState } from "../../app/store"
 import { InitialState } from "../../interfaces/Store"
-import { UserLoginData, UserRegistrationData } from "../../interfaces/User"
+import { UserLoginData, UserCreateData } from "../../interfaces/User"
 import authService from "./authService"
 
 // Get user from localStorage
-const user: UserRegistrationData = JSON.parse(
+const user: UserCreateData = JSON.parse(
   localStorage.getItem("user") as string
 )
 
@@ -20,7 +20,7 @@ const initialState: InitialState = {
 // Register user
 export const register = createAsyncThunk(
   "auth/register",
-  async (user: UserRegistrationData, thunkAPI) => {
+  async (user: UserCreateData, thunkAPI) => {
     try {
       return await authService.register(user)
     } catch (error: any) {
@@ -36,17 +36,22 @@ export const register = createAsyncThunk(
 )
 
 // Login user
-export const login = createAsyncThunk("auth/login", async (user: UserLoginData, thunkAPI) => {
-  try {
-    return await authService.login(user)
-  } catch (error: any) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString()
-    return thunkAPI.rejectWithValue(message as string)
+export const login = createAsyncThunk(
+  "auth/login",
+  async (user: UserLoginData, thunkAPI) => {
+    try {
+      return await authService.login(user)
+    } catch (error: any) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message as string)
+    }
   }
-})
+)
 
 export const logout = createAsyncThunk("auth/logout", async () => {
   await authService.logout()
@@ -99,7 +104,6 @@ export const authSlice = createSlice({
   },
 })
 
-export const authSelector = (state: InitialState) => state
 export const selectLoginedUser = (state: RootState) => state.auth
 
 export const { reset } = authSlice.actions

@@ -1,4 +1,4 @@
-import { green, amber, indigo } from "@mui/material/colors"
+import { green, amber, indigo, red } from "@mui/material/colors"
 import { createTheme } from "@mui/material/styles"
 
 const theme = createTheme({
@@ -6,6 +6,7 @@ const theme = createTheme({
     primary: green,
     secondary: amber,
     info: indigo,
+    error: red,
   },
 })
 

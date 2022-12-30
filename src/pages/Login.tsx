@@ -9,15 +9,16 @@ import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 import { Link, useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { login, reset, selectLoginedUser } from "../features/auth/authSlice"
+import { login, selectLoginedUser } from "../features/auth/authSlice"
 import { useDispatch } from "react-redux"
 import { AppDispatch } from "../app/store"
 import { ChangeEvent, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import { useAppDispatch, useAppSelector } from "../app/hooks"
 
 export default function Login() {
   const { t } = useTranslation()
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
@@ -28,18 +29,16 @@ export default function Login() {
   const { email, password } = formData
 
   const { user, isLoading, isError, isSuccess, message } =
-    useSelector(selectLoginedUser)
+  useAppSelector(selectLoginedUser)
 
   useEffect(() => {
     // if (isError) {
     //   toast.error(message)
     // }
-    if (isSuccess || user) {
+    if (isSuccess && user) {
       navigate("/")
     }
-
-    dispatch(reset())
-  }, [user, isError, isSuccess, message, navigate, dispatch])
+  }, [user, isError, isSuccess, message])
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData((prevState) => ({
