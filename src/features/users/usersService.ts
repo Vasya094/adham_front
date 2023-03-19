@@ -1,4 +1,4 @@
-import { StandartResponse } from "../../interfaces"
+import { Option, StandartResponse } from "../../interfaces"
 import { LessonInList } from "../../interfaces/Lesson"
 import { UserCreateData, UserInfoInStore } from "../../interfaces/User"
 import api from "../../services/api"
@@ -6,7 +6,7 @@ import api from "../../services/api"
 const filterByName = async (
   name: string,
   role: string = "student"
-): Promise<StandartResponse<LessonInList>> => {
+): Promise<Array<Option>> => {
   const response = await api.get(`/user-short?name=${name}&role=${role}`)
   return response.data.data.map((user: UserInfoInStore) => ({
     value: user._id,

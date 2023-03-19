@@ -2,7 +2,7 @@ import { Box } from "@mui/system"
 import { useEffect } from "react"
 import { useAppDispatch } from "../app/hooks"
 import StudentsTable from "../components/StudentsTable"
-import { setFilterRole } from "../features/users/usersSlice"
+// import { setFilterRole } from "../features/users/usersSlice"
 
 function Students() {
   const dispatch = useAppDispatch()

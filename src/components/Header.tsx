@@ -51,7 +51,7 @@ export default function MenuAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
         <Toolbar>
-          {loginedUser && loginedUser.user && (
+          {loginedUser?.user && (
             <IconButton
               size='large'
               edge='start'
@@ -78,7 +78,7 @@ export default function MenuAppBar() {
               borderRadius: 1,
             }}
           >
-            {loginedUser && loginedUser.user && (
+            {loginedUser?.user && (
               <Box>
                 <Button key={loginedUser?.user._id} sx={{ color: "#fff" }}>
                   {loginedUser?.user.firstName}
@@ -95,7 +95,7 @@ export default function MenuAppBar() {
             >
               <AccountCircle />
             </IconButton>
-            {loginedUser && loginedUser.user ? (
+            {loginedUser?.user ? (
               <Menu
                 id='menu-appbar'
                 anchorEl={anchorEl}
@@ -134,7 +134,7 @@ export default function MenuAppBar() {
         </Toolbar>
       </AppBar>
       <Drawer anchor='left' open={leftMenu} onClose={() => setLeftMenu(false)}>
-        <LeftMenu hideMenu={() => setLeftMenu(false)} />
+        <LeftMenu userRoles={loginedUser?.user?.roles} hideMenu={() => setLeftMenu(false)} />
       </Drawer>
     </Box>
   )

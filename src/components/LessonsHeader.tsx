@@ -10,9 +10,11 @@ import {
 import { Box } from "@mui/system"
 import { t } from "i18next"
 import React from "react"
+import { useTranslation } from "react-i18next"
 import LessonForm from "./LessonForm"
 
 const LessonsHeader = () => {
+  const { t } = useTranslation()
   const [open, setOpen] = React.useState(false)
 
   const handleClickOpen = () => {
@@ -42,9 +44,9 @@ const LessonsHeader = () => {
         </Box>
       </div>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>{t("lesson")}</DialogTitle>
         <DialogContent>
-          <LessonForm  />
+          <LessonForm />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

@@ -2,7 +2,7 @@ import { StandartResponse } from "../../interfaces"
 import { LessonInList } from "../../interfaces/Lesson"
 import api from "../../services/api"
 
-const create = async (newLessonData) => {
+const create = async (newLessonData: Record<string, unknown>) => {
   const response = await api.post("/lessons", newLessonData)
 
   return response.data

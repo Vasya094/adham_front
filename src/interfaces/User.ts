@@ -27,5 +27,6 @@ export interface UserInfoInStore {
   gender: string
   phoneNumber: string
   livingCountry: string
+  roles?: string[]
   birthDate: Date | string
 }

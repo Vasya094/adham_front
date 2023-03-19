@@ -1,4 +1,5 @@
 import {
+  Icon,
   List,
   ListItem,
   ListItemButton,
@@ -11,8 +12,11 @@ import GroupsIcon from "@mui/icons-material/Groups"
 import ContactPageIcon from "@mui/icons-material/ContactPage"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router"
+import { LeftMenuProps } from "../interfaces"
+import { leftMenuItems } from "../helpers/leftMenuConfig"
+import React, { createElement } from "react"
 
-const LeftMenu = ({ hideMenu }: { hideMenu: () => void }) => {
+const LeftMenu = ({ hideMenu, userRoles }: LeftMenuProps) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
@@ -22,30 +26,20 @@ const LeftMenu = ({ hideMenu }: { hideMenu: () => void }) => {
   }
   return (
     <List>
-      <ListItem onClick={() => goTo("/lessons")}>
-        <ListItemButton>
-          <ListItemIcon>
-            <SchoolIcon />
-          </ListItemIcon>
-          <ListItemText primary={t("lessons")} />
-        </ListItemButton>
-      </ListItem>
-      <ListItem onClick={() => goTo("/students")}>
-        <ListItemButton>
-          <ListItemIcon>
-            <GroupsIcon />
-          </ListItemIcon>
-          <ListItemText primary={t("students")} />
-        </ListItemButton>
-      </ListItem>
-      <ListItem onClick={() => goTo("/teachers")}>
-        <ListItemButton>
-          <ListItemIcon>
-            <ContactPageIcon />
-          </ListItemIcon>
-          <ListItemText primary={t("teachers")} />
-        </ListItemButton>
-      </ListItem>
+      {leftMenuItems.map(
+        (item) =>
+          userRoles &&
+          item.accessRoles.some((ai) => userRoles.includes(ai)) && (
+            <ListItem onClick={() => goTo(item.route)}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <item.icon />
+                </ListItemIcon>
+                <ListItemText primary={t(item.label)} />
+              </ListItemButton>
+            </ListItem>
+          )
+      )}
     </List>
   )
 }

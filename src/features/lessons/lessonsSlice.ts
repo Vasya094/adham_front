@@ -16,7 +16,7 @@ const initialState: LessonsInitialState = {
 
 export const createLesson = createAsyncThunk(
   "lessons/create",
-  async (newLessonData) => {
+  async (newLessonData: Record<string, unknown>) => {
     const res = await LessonsService.create(newLessonData)
     return res.data
   }
