@@ -93,37 +93,52 @@ import UsersService from "../features/users/usersService"
 import { useState, FunctionComponent } from "react"
 import AsyncSelect from "react-select/async"
 import makeAnimated from "react-select/animated"
+import { Box } from "@mui/system"
+import { t } from "i18next"
+import { useTranslation } from "react-i18next"
 
 const LessonForm: FunctionComponent = () => {
+  const { t } = useTranslation()
   const [query, setQuery] = useState("")
 
   const handleChange = (option: any) => {
     console.log("im in handleChange!")
     console.log(option)
+    debugger
   }
 
-  const loadTeachers = async (inputValue: string): Promise<any> => {
-    return UsersService.filterByName(inputValue, "teacher")
+  const loadUsersAsOptions = async (inputValue: string, type: string): Promise<any> => {
+    return UsersService.filterByName(inputValue, type)
   }
 
   //get animated components wrapper
   const animatedComponents = makeAnimated()
 
   return (
-    <div className='location-input-container'>
+    <Box className='location-input-container'>
       <div className='location-input'>
         <AsyncSelect
           isMulti={true}
           components={animatedComponents}
           cacheOptions
-          placeholder='Enter a City or ZIP code'
+          placeholder={t("chooseTeacher")}
           onChange={(option) => handleChange(option)}
           closeMenuOnSelect={true}
-          noOptionsMessage={() => "No Match Found"}
-          loadOptions={loadTeachers}
+          noOptionsMessage={() => t("noMatchFound")}
+          loadOptions={(val) => loadUsersAsOptions(val, 'teacher')}
+        />
+        <AsyncSelect
+          isMulti={true}
+          components={animatedComponents}
+          cacheOptions
+          placeholder={t("chooseStudent")}
+          onChange={(option) => handleChange(option)}
+          closeMenuOnSelect={true}
+          noOptionsMessage={() => t("noMatchFound")}
+          loadOptions={(val) => loadUsersAsOptions(val, 'student')}
         />
       </div>
-    </div>
+    </Box>
   )
 }
 

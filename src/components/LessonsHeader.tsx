@@ -43,7 +43,15 @@ const LessonsHeader = () => {
           </Button>
         </Box>
       </div>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog
+        PaperProps={{
+          style: { minHeight: "30rem" },
+        }}
+        fullWidth
+        maxWidth='md'
+        open={open}
+        onClose={handleClose}
+      >
         <DialogTitle>{t("lesson")}</DialogTitle>
         <DialogContent>
           <LessonForm />

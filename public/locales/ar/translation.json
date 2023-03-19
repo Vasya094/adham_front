@@ -37,5 +37,8 @@
   "female": "أنثى",
   "students": "طلاب",
   "teachers": "معلمون",
-  "fullName": "الاسم الكامل"
+  "fullName": "الاسم الكامل",
+  "chooseTeacher": "اختر مدرسًا",
+  "chooseStudent": "اختر طالبًا",
+  "noMatchFound": "لا يوجد تطابق"
 }

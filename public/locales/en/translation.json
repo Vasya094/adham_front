@@ -37,5 +37,8 @@
   "female": "Female",
   "students": "Students",
   "teachers": "Teachers",
-  "fullName": "Full name"
+  "fullName": "Full name",
+  "chooseTeacher": "Choose Teacher",
+  "chooseStudent": "Choose Student",
+  "noMatchFound": "No match found"
 }
